@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +7,21 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  form: FormGroup;
+  @ViewChild('form') form: NgForm;
+  // form: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder
   ) {
-
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      name: new FormControl(null, [Validators.required]),
-      phoneNumber: new FormControl('0650550318',[Validators.required])
+    // this.form = this.formBuilder.group({
+    //   phoneNumber: new FormControl(null)
+    // });
+
+    this.form.valueChanges.subscribe(data => {
+      // console.log(data, this.form);
     });
   }
 }

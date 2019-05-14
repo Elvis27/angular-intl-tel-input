@@ -2,15 +2,18 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import { IntlTelInputComponent } from './intl-tel-input.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {BsDropdownModule} from 'ngx-bootstrap';
 import {IntlTelInputService} from './intl-tel-input.service';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [IntlTelInputComponent],
   imports: [
     CommonModule,
     FormsModule,
-    BsDropdownModule
+    MatSelectModule,
+    MatInputModule
   ],
   exports: [IntlTelInputComponent]
 })

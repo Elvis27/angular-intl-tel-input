@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IntlTelInputModule} from '../../projects/intl-tel-input/src/lib/intl-tel-input.module';
 import {BsDropdownModule} from 'ngx-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,12 @@ import {BsDropdownModule} from 'ngx-bootstrap';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     IntlTelInputModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

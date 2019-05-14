@@ -4,8 +4,8 @@ export class Country {
     dialCode: string;
     priority: number;
     areaCode: number;
-    flagClass: string;
-    placeHolder: string;
+    flagClass?: string;
+    placeHolder?: string;
     constructor() {
         this.name = '';
         this.iso2 = '';

@@ -1,5 +1,5 @@
-<div class="intl-tel-input allow-dropdown">
-  <div class="flag-container" dropdown [isDisabled]="disabled" [ngClass]="{'disabled': disabled}">
+<div class="intl-tel-input">
+  <!-- <div class="flag-container" dropdown [isDisabled]="disabled" [ngClass]="{'disabled': disabled}">
     <div class="selected-flag dropdown-toggle" dropdownToggle>
       <div class="iti-flag" [ngClass]="selectedCountry.flagClass"></div>
       <div class="iti-arrow"></div>
@@ -21,11 +21,33 @@
         <span class="dial-code">+{{country.dialCode}}</span>
       </li>
     </ul>
-  </div>
-  <input type="tel" id="phone" class="form-control" autocomplete="off"
-         (keypress)="onInputKeyPress($event)"
-         [(ngModel)]="phoneNumber"
-         (ngModelChange)="onPhoneNumberChange()"
-         [disabled]="disabled"
-         [placeholder]="selectedCountry.placeHolder" #focusable>
+  </div> -->
+  <mat-select [disabled]="disabled" [value]="selectedCountry" [required]="required"
+    (selectionChange)="onCountrySelect($event, focusable)">
+    <mat-option *ngFor="let country of preferredCountriesInDropDown" [value]="country">
+      <div class="flag-box">
+        <div class="iti-flag" [ngClass]="country.flagClass"></div>
+      </div>
+      <span class="country-name">{{country.name}}</span>
+      <span class="dial-code">+{{country.dialCode}}</span>
+    </mat-option>
+    <mat-option *ngFor="let country of allCountries" [value]="country">
+      <span class="flag-box">
+        {{country.flagClass}}
+        <span class="iti-flag" [ngClass]="country.flagClass"></span>
+      </span>
+      <span class="country-name">{{country.name}}</span>
+      <span class="dial-code">+{{country.dialCode}}</span>
+    </mat-option>
+  </mat-select>
+  <mat-form-field>
+    <input 
+      matInput type="tel" id="phone" class="form-control" autocomplete="off"
+      [(ngModel)]="phoneNumber"
+      [disabled]="disabled"
+      [required]="required"
+      [placeholder]="placeHolder" 
+      (keypress)="onInputKeyPress($event)"
+      (input)="onPhoneNumberChange()" #focusable />
+  </mat-form-field>
 </div>
